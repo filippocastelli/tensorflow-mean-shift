@@ -1,6 +1,17 @@
 import tensorflow as tf
 import numpy as np
 
+def main():
+    # Creates the corresponding TF ops
+    mean_shift_tf = MeanShiftTF()
+    
+    # Now apply 
+    n_points = 50
+    n_features = 6
+    data = np.random.random((n_points, n_features))
+    peaks, labels = mean_shift_tf.apply(data, radius=0.1, chunk_size=4)
+    
+
 class MeanShiftTF:
     def __init__(self):
         self.radius_t = tf.placeholder(shape=(), dtype=tf.float32)
@@ -83,7 +94,5 @@ class MeanShiftTF:
 
         return peaks[:n_peaks], labels
         
-if __name__ == '__main__'
-    mean_shift_tf = MeanShiftTF()
-    
-    # mean_shift_tf.apply(some_data)
+if __name__ == '__main__':
+    main()
