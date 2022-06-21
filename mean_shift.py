@@ -14,7 +14,7 @@ def main():
 
 class MeanShiftTF:
     def __init__(self):
-        self.radius_t = tf.placeholder(shape=(), dtype=tf.float32)
+        self.radius_t = tf.compat.v1.placeholder(shape=(), dtype=tf.float32)
         self.orig_data_all_t = tf.placeholder(shape=(None, None), dtype=tf.float32)
         
         self.indices_t = tf.placeholder(shape=(None,), dtype=tf.int32)
